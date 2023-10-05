@@ -41,7 +41,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header />
       <AppContext.Provider
         value={{
@@ -55,7 +55,7 @@ function App() {
         <Outlet />
       </AppContext.Provider>
       <Footer />
-    </>
+    </div>
   );
 }
 
