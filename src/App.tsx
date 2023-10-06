@@ -4,18 +4,37 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { useState } from 'react';
 
+const companyInformations = {
+  'Meta Data': {
+    '1. Information': '',
+    '2. Symbol': '',
+    '3. Last Refreshed': '',
+    '4. Output Size': '',
+    '5. Time Zone': ''
+  },
+  'Time Series (5min)': {
+    '1. open': '',
+    '2. high': '',
+    '3. low': '',
+    '4. close': '',
+    '5. volume': ''
+  }
+};
+
 function App() {
   const navigate = useNavigate();
 
   const [stockData, setStockData] = useState({ bestMatches: [] });
-  const [stockCompanyData, setStockCompanyData] = useState({});
+  const [stockCompanyData, setStockCompanyData] = useState(
+    companyInformations
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [stockError, setStockError] = useState(false);
 
   const resetContext = () => {
     setStockData({ bestMatches: [] });
-    setStockCompanyData({});
+    setStockCompanyData(companyInformations);
     setInputValue('');
     setIsLoading(false);
     setStockError(false);
@@ -38,7 +57,6 @@ function App() {
     navigate('/details');
     const parentDiv = e.currentTarget.parentElement as HTMLDivElement;
     const companySymbol = parentDiv.getAttribute('data-symbol');
-    console.log(companySymbol);
     fetchCompanyStockData(companySymbol!);
   };
 
@@ -62,6 +80,7 @@ function App() {
 
       setIsLoading(false);
     } catch (error) {
+      setStockError(true);
       console.log('Error occurred during data fetch:', error);
     }
   };
@@ -71,7 +90,7 @@ function App() {
       setIsLoading(true);
       const response = await fetch(
         `
-            https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${companySymbol}&interval=5min&apikey=${
+            https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${companySymbol}&apikey=${
               import.meta.env.VITE_ALPHA_VANTAGE_API_KEY
             }`
       );
@@ -82,6 +101,7 @@ function App() {
 
       setIsLoading(false);
     } catch (error) {
+      setStockError(true);
       console.log('Error occurred during data fetch:', error);
     }
   };
