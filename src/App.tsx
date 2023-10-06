@@ -8,11 +8,13 @@ function App() {
   const [stockData, setStockData] = useState({ bestMatches: [] });
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [stockError, setStockError] = useState(false);
 
   const resetContext = () => {
     setStockData({ bestMatches: [] });
     setInputValue('');
     setIsLoading(false);
+    setStockError(false);
   };
 
   const handleInputChange = (
@@ -23,6 +25,7 @@ function App() {
 
   const handleSearch = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault;
+    resetContext();
     fetchSearchEndpointData();
   };
 
@@ -40,6 +43,10 @@ function App() {
 
       setStockData(jsonData);
 
+      if (jsonData.bestMatches.length === 0) {
+        setStockError(true);
+      }
+
       setIsLoading(false);
     } catch (error) {
       console.log('Error occurred during data fetch:', error);
@@ -56,7 +63,8 @@ function App() {
           resetContext,
           stockData,
           inputValue,
-          isLoading
+          isLoading,
+          stockError
         }}
       >
         <Outlet />

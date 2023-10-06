@@ -12,6 +12,7 @@ type AppContextType = {
   };
   inputValue: string;
   isLoading: boolean;
+  stockError: boolean;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -20,7 +21,8 @@ const AppContext = createContext<AppContextType>({
   resetContext: () => {},
   stockData: { bestMatches: [] },
   inputValue: '',
-  isLoading: false
+  isLoading: false,
+  stockError: false
 });
 
 export default AppContext;
