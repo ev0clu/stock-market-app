@@ -1,17 +1,21 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { useState } from 'react';
 
 function App() {
+  const navigate = useNavigate();
+
   const [stockData, setStockData] = useState({ bestMatches: [] });
+  const [stockCompanyData, setStockCompanyData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [stockError, setStockError] = useState(false);
 
   const resetContext = () => {
     setStockData({ bestMatches: [] });
+    setStockCompanyData({});
     setInputValue('');
     setIsLoading(false);
     setStockError(false);
@@ -27,6 +31,15 @@ function App() {
     e.preventDefault;
     resetContext();
     fetchSearchEndpointData();
+  };
+
+  const handleDetails = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault;
+    navigate('/details');
+    const parentDiv = e.currentTarget.parentElement as HTMLDivElement;
+    const companySymbol = parentDiv.getAttribute('data-symbol');
+    console.log(companySymbol);
+    fetchCompanyStockData(companySymbol!);
   };
 
   const fetchSearchEndpointData = async () => {
@@ -53,6 +66,26 @@ function App() {
     }
   };
 
+  const fetchCompanyStockData = async (companySymbol: string) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `
+            https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${companySymbol}&interval=5min&apikey=${
+              import.meta.env.VITE_ALPHA_VANTAGE_API_KEY
+            }`
+      );
+
+      const jsonData = await response.json();
+
+      setStockCompanyData(jsonData);
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log('Error occurred during data fetch:', error);
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -60,8 +93,10 @@ function App() {
         value={{
           handleSearch,
           handleInputChange,
+          handleDetails,
           resetContext,
           stockData,
+          stockCompanyData,
           inputValue,
           isLoading,
           stockError
