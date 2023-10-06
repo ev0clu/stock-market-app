@@ -19,7 +19,7 @@ type AppContextType = {
       '4. Output Size': string;
       '5. Time Zone': string;
     };
-    'Time Series (5min)': {
+    'Time Series (Daily)': {
       '1. open': string;
       '2. high': string;
       '3. low': string;
@@ -46,7 +46,7 @@ const AppContext = createContext<AppContextType>({
       '4. Output Size': '',
       '5. Time Zone': ''
     },
-    'Time Series (5min)': {
+    'Time Series (Daily)': {
       '1. open': '',
       '2. high': '',
       '3. low': '',

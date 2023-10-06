@@ -12,7 +12,7 @@ const companyInformations = {
     '4. Output Size': '',
     '5. Time Zone': ''
   },
-  'Time Series (5min)': {
+  'Time Series (Daily)': {
     '1. open': '',
     '2. high': '',
     '3. low': '',
