@@ -4,7 +4,10 @@ type AppContextType = {
   handleSearch: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   stockData: {
-    [key: string]: string;
+    bestMatches: {
+      '1. symbol': string;
+      '2. name': string;
+    }[];
   };
   inputValue: string;
   isLoading: boolean;
@@ -13,7 +16,7 @@ type AppContextType = {
 const AppContext = createContext<AppContextType>({
   handleSearch: () => {},
   handleInputChange: () => {},
-  stockData: {},
+  stockData: { bestMatches: [] },
   inputValue: '',
   isLoading: false
 });
