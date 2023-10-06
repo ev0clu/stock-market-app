@@ -13,11 +13,13 @@ const companyInformations = {
     '5. Time Zone': ''
   },
   'Time Series (Daily)': {
-    '1. open': '',
-    '2. high': '',
-    '3. low': '',
-    '4. close': '',
-    '5. volume': ''
+    '2023-10-06': {
+      '1. open': '',
+      '2. high': '',
+      '3. low': '',
+      '4. close': '',
+      '5. volume': ''
+    }
   }
 };
 
