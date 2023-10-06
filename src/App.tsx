@@ -9,6 +9,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
+  const resetContext = () => {
+    setStockData({ bestMatches: [] });
+    setInputValue('');
+    setIsLoading(false);
+  };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -47,6 +53,7 @@ function App() {
         value={{
           handleSearch,
           handleInputChange,
+          resetContext,
           stockData,
           inputValue,
           isLoading
