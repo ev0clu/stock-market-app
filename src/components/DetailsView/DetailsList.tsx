@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import MetaData from './MetaData';
+import TimeSeries from './TimeSeries';
 
 function DetailsList() {
   const { stockCompanyData, isLoading } = useContext(AppContext);
@@ -19,7 +20,10 @@ function DetailsList() {
               Stock informations have not found
             </p>
           ) : (
-            <MetaData />
+            <div>
+              <MetaData />
+              <TimeSeries />
+            </div>
           )}
         </div>
       )}
