@@ -5,6 +5,9 @@ export default {
     extend: {
       colors: {
         custom_green: '#5CC7B2'
+      },
+      maxWidth: {
+        '10rem': '10rem'
       }
     }
   },
