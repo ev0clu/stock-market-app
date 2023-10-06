@@ -11,7 +11,22 @@ type AppContextType = {
       '2. name': string;
     }[];
   };
-  stockCompanyData: object;
+  stockCompanyData: {
+    'Meta Data': {
+      '1. Information': string;
+      '2. Symbol': string;
+      '3. Last Refreshed': string;
+      '4. Output Size': string;
+      '5. Time Zone': string;
+    };
+    'Time Series (5min)': {
+      '1. open': string;
+      '2. high': string;
+      '3. low': string;
+      '4. close': string;
+      '5. volume': string;
+    };
+  };
   inputValue: string;
   isLoading: boolean;
   stockError: boolean;
@@ -23,7 +38,22 @@ const AppContext = createContext<AppContextType>({
   handleDetails: () => {},
   resetContext: () => {},
   stockData: { bestMatches: [] },
-  stockCompanyData: {},
+  stockCompanyData: {
+    'Meta Data': {
+      '1. Information': '',
+      '2. Symbol': '',
+      '3. Last Refreshed': '',
+      '4. Output Size': '',
+      '5. Time Zone': ''
+    },
+    'Time Series (5min)': {
+      '1. open': '',
+      '2. high': '',
+      '3. low': '',
+      '4. close': '',
+      '5. volume': ''
+    }
+  },
   inputValue: '',
   isLoading: false,
   stockError: false
