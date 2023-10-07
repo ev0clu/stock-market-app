@@ -7,8 +7,10 @@ function TimeSeries() {
   const renderedData = Object.entries(
     stockCompanyData['Time Series (Daily)']
   ).map(([date, entry]) => (
-    <div key={date}>
-      <p>Date: {date}</p>
+    <div className="border-2 p-2" key={date}>
+      <p>
+        <b>{date}</b>
+      </p>
       <p>Open: {entry['1. open']}</p>
       <p>High: {entry['2. high']}</p>
       <p>Low: {entry['3. low']}</p>
@@ -19,7 +21,7 @@ function TimeSeries() {
 
   return (
     <>
-      <h1 className="mx-10 my-5 flex flex-row gap-3 text-xl font-bold">
+      <h1 className="mx-10 mb-2 mt-5 flex flex-row gap-3 text-xl font-bold">
         Time Series (Daily)
       </h1>
       <div className="min-w-350 mx-10 grid grid-cols-2 gap-4 md:grid-cols-5">

@@ -12,7 +12,6 @@ function DetailsView() {
 
   return (
     <div className="flex-1">
-      <DetailsList />
       <div className="flex justify-center">
         <Link to="/">
           <div className="my-3 h-10 w-28 rounded bg-stone-500 px-2 py-2 text-center text-white">
@@ -20,6 +19,7 @@ function DetailsView() {
           </div>
         </Link>
       </div>
+      <DetailsList />
     </div>
   );
 }
