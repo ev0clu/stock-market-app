@@ -21,11 +21,11 @@ function MetaData() {
 
   return (
     <>
-      <h1 className="mx-10 my-5 flex flex-row gap-3 text-xl font-bold">
+      <h1 className="mb-2 mt-5 flex flex-row gap-3 text-xl font-bold">
         {stockCompanyData['Meta Data']['1. Information']} (
         {stockCompanyData['Meta Data']['2. Symbol']})
       </h1>
-      <div className="mx-10 flex flex-col">{renderedData}</div>
+      <div className="flex flex-col">{renderedData}</div>
     </>
   );
 }

@@ -7,7 +7,7 @@ function SearchList() {
 
   const renderData = stockData.bestMatches.map((stock, index) => (
     <div
-      className="mx-10 flex flex-row items-center justify-between gap-4 border-b-2 py-2"
+      className="flex flex-row items-center justify-between gap-4 border-b-2 py-2"
       key={index}
       data-symbol={stock['1. symbol']}
     >
