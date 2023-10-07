@@ -21,10 +21,10 @@ function TimeSeries() {
 
   return (
     <>
-      <h1 className="mx-10 mb-2 mt-5 flex flex-row gap-3 text-xl font-bold">
+      <h1 className="mb-2 mt-5 flex flex-row gap-3 text-xl font-bold">
         Time Series (Daily)
       </h1>
-      <div className="min-w-350 mx-10 grid grid-cols-2 gap-4 md:grid-cols-5">
+      <div className="min-w-350 grid grid-cols-2 gap-4 md:grid-cols-5">
         {renderedData}
       </div>
     </>

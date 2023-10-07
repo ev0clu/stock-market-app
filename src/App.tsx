@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const companyInformations = {
   'Meta Data': {
@@ -33,6 +33,31 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [stockError, setStockError] = useState(false);
+  const [favourite, setFavourite] = useState<string[]>([]);
+  const [isRestoredLocalStorage, setIsRestoredLocalStorage] =
+    useState(false);
+
+  useEffect(() => {
+    restoreLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (isRestoredLocalStorage) {
+      saveLocalStorage();
+    }
+  }, [favourite, isRestoredLocalStorage]);
+
+  const saveLocalStorage = () => {
+    localStorage.setItem('data-stock', JSON.stringify(favourite));
+  };
+
+  const restoreLocalStorage = () => {
+    const storageData = localStorage.getItem('data-stock');
+
+    setFavourite(storageData ? JSON.parse(storageData) : []);
+
+    setIsRestoredLocalStorage(true);
+  };
 
   const resetContext = () => {
     setStockData({ bestMatches: [] });
@@ -40,6 +65,22 @@ function App() {
     setInputValue('');
     setIsLoading(false);
     setStockError(false);
+  };
+
+  const handleFavouriteAdd = (e: React.MouseEvent<HTMLElement>) => {
+    const companySymbol = e.currentTarget.getAttribute('data-symbol');
+
+    setFavourite((prevVal) => [...prevVal, companySymbol!]);
+  };
+
+  const handleFavouriteRemove = (
+    e: React.MouseEvent<HTMLElement>
+  ) => {
+    const companySymbol = e.currentTarget.getAttribute('data-symbol');
+
+    setFavourite((prevArray) =>
+      prevArray.filter((item) => item !== companySymbol)
+    );
   };
 
   const handleInputChange = (
@@ -57,8 +98,8 @@ function App() {
   const handleDetails = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault;
     navigate('/details');
-    const parentDiv = e.currentTarget.parentElement as HTMLDivElement;
-    const companySymbol = parentDiv.getAttribute('data-symbol');
+    const companySymbol = e.currentTarget.getAttribute('data-symbol');
+
     fetchCompanyStockData(companySymbol!);
   };
 
@@ -117,11 +158,14 @@ function App() {
           handleInputChange,
           handleDetails,
           resetContext,
+          handleFavouriteAdd,
+          handleFavouriteRemove,
           stockData,
           stockCompanyData,
           inputValue,
           isLoading,
-          stockError
+          stockError,
+          favourite
         }}
       >
         <Outlet />

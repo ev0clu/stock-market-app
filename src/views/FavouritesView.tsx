@@ -1,9 +1,8 @@
 import { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
-import DetailsList from '../components/DetailsView/DetailsList';
-import NewSearchButton from '../components/NewSearchButton';
+import Favourites from '../components/FaviorutesView/Favourites';
 
-function DetailsView() {
+function FavouritesView() {
   const { resetContext } = useContext(AppContext);
 
   useEffect(() => {
@@ -12,10 +11,9 @@ function DetailsView() {
 
   return (
     <div className="mx-10 flex-1">
-      <NewSearchButton />
-      <DetailsList />
+      <Favourites />
     </div>
   );
 }
 
-export default DetailsView;
+export default FavouritesView;

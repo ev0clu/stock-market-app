@@ -5,6 +5,12 @@ type AppContextType = {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleDetails: (e: React.MouseEvent<HTMLButtonElement>) => void;
   resetContext: () => void;
+  handleFavouriteAdd: (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => void;
+  handleFavouriteRemove: (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => void;
   stockData: {
     bestMatches: {
       '1. symbol': string;
@@ -32,6 +38,7 @@ type AppContextType = {
   inputValue: string;
   isLoading: boolean;
   stockError: boolean;
+  favourite: string[];
 };
 
 const AppContext = createContext<AppContextType>({
@@ -39,6 +46,8 @@ const AppContext = createContext<AppContextType>({
   handleInputChange: () => {},
   handleDetails: () => {},
   resetContext: () => {},
+  handleFavouriteAdd: () => {},
+  handleFavouriteRemove: () => {},
   stockData: { bestMatches: [] },
   stockCompanyData: {
     'Meta Data': {
@@ -60,7 +69,8 @@ const AppContext = createContext<AppContextType>({
   },
   inputValue: '',
   isLoading: false,
-  stockError: false
+  stockError: false,
+  favourite: []
 });
 
 export default AppContext;
