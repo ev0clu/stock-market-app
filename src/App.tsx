@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const companyInformations = {
   'Meta Data': {
@@ -34,6 +34,30 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const [stockError, setStockError] = useState(false);
   const [favourite, setFavourite] = useState<string[]>([]);
+  const [isRestoredLocalStorage, setIsRestoredLocalStorage] =
+    useState(false);
+
+  useEffect(() => {
+    restoreLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (isRestoredLocalStorage) {
+      saveLocalStorage();
+    }
+  }, [favourite, isRestoredLocalStorage]);
+
+  const saveLocalStorage = () => {
+    localStorage.setItem('data-stock', JSON.stringify(favourite));
+  };
+
+  const restoreLocalStorage = () => {
+    const storageData = localStorage.getItem('data-stock');
+
+    setFavourite(storageData ? JSON.parse(storageData) : []);
+
+    setIsRestoredLocalStorage(true);
+  };
 
   const resetContext = () => {
     setStockData({ bestMatches: [] });
