@@ -42,6 +42,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setIsLoading(false);
+  }, [stockData, stockCompanyData]);
+
+  useEffect(() => {
     if (isRestoredLocalStorage) {
       saveLocalStorage();
     }
@@ -117,13 +121,22 @@ function App() {
 
       setStockData(jsonData);
 
-      if (jsonData.bestMatches.length === 0) {
+      if (
+        'Error Message' in jsonData ||
+        'Information' in jsonData ||
+        'Note' in jsonData
+      ) {
         setStockError(true);
       }
 
-      setIsLoading(false);
+      if ('bestMatches' in jsonData) {
+        if (jsonData.bestMatches.length === 0) {
+          setStockError(true);
+        }
+      }
     } catch (error) {
       setStockError(true);
+      setIsLoading(false);
       console.log('Error occurred during data fetch:', error);
     }
   };
@@ -140,11 +153,18 @@ function App() {
 
       const jsonData = await response.json();
 
-      setStockCompanyData(jsonData);
+      if (
+        'Error Message' in jsonData ||
+        'Information' in jsonData ||
+        'Note' in jsonData
+      ) {
+        setStockError(true);
+      }
 
-      setIsLoading(false);
+      setStockCompanyData(jsonData);
     } catch (error) {
       setStockError(true);
+      setIsLoading(false);
       console.log('Error occurred during data fetch:', error);
     }
   };

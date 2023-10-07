@@ -4,26 +4,30 @@ import MetaData from './MetaData';
 import TimeSeries from './TimeSeries';
 
 function DetailsList() {
-  const { stockCompanyData, isLoading } = useContext(AppContext);
+  const { stockCompanyData, isLoading, stockError } =
+    useContext(AppContext);
 
   return (
     <>
-      {isLoading ||
-      stockCompanyData['Meta Data']['1. Information'] === '' ? (
+      {isLoading ? (
         <div className="flex flex-col items-center">
           <div>Loading ...</div>
         </div>
       ) : (
         <div className="flex flex-col items-stretch">
-          {'Error Message' in stockCompanyData ? (
+          {stockError ? (
             <p className="mx-auto my-5 text-red-600">
-              Stock informations have not found
+              Stock informations have not found or API limit/minute
+              has reached
             </p>
           ) : (
-            <div>
-              <MetaData />
-              <TimeSeries />
-            </div>
+            stockCompanyData['Meta Data']['1. Information'] !==
+              '' && (
+              <div>
+                <MetaData />
+                <TimeSeries />
+              </div>
+            )
           )}
         </div>
       )}
