@@ -3,8 +3,12 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import AppContext from '../../context/AppContext';
 
 function SearchBar() {
-  const { handleSearch, handleInputChange, inputValue } =
-    useContext(AppContext);
+  const {
+    handleSearch,
+    handleInputKeyDown,
+    handleInputChange,
+    inputValue
+  } = useContext(AppContext);
 
   return (
     <div className="my-10 flex flex-row items-center justify-center gap-3">
@@ -14,6 +18,7 @@ function SearchBar() {
         placeholder="Search by symbol or name"
         value={inputValue}
         onChange={handleInputChange}
+        onKeyDown={handleInputKeyDown}
       />
       <button className="h-7 w-7 rounded-full" onClick={handleSearch}>
         <AiOutlineSearch className="h-7 w-7 " />

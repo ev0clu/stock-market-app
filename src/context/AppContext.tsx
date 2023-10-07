@@ -2,6 +2,9 @@ import { createContext } from 'react';
 
 type AppContextType = {
   handleSearch: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleInputKeyDown: (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleDetails: (e: React.MouseEvent<HTMLButtonElement>) => void;
   resetContext: () => void;
@@ -43,6 +46,7 @@ type AppContextType = {
 
 const AppContext = createContext<AppContextType>({
   handleSearch: () => {},
+  handleInputKeyDown: () => {},
   handleInputChange: () => {},
   handleDetails: () => {},
   resetContext: () => {},

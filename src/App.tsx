@@ -99,6 +99,15 @@ function App() {
     fetchSearchEndpointData();
   };
 
+  const handleInputKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (e.key === 'Enter' && inputValue !== '') {
+      resetContext();
+      fetchSearchEndpointData();
+    }
+  };
+
   const handleDetails = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault;
     navigate('/details');
@@ -175,6 +184,7 @@ function App() {
       <AppContext.Provider
         value={{
           handleSearch,
+          handleInputKeyDown,
           handleInputChange,
           handleDetails,
           resetContext,
