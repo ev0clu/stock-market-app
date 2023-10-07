@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
-import Favourites from '../components/FaviorutesView/Favourites';
+import Favourites from '../components/FavouritesView/Favourites';
 
 function FavouritesView() {
   const { resetContext } = useContext(AppContext);
