@@ -20,14 +20,16 @@ function DetailsList() {
               Stock informations have not found or API limit/minute
               has reached
             </p>
+          ) : stockCompanyData['Meta Data']['1. Information'] ===
+            '' ? (
+            <div className="flex flex-col items-center">
+              <div>Loading ...</div>
+            </div>
           ) : (
-            stockCompanyData['Meta Data']['1. Information'] !==
-              '' && (
-              <div>
-                <MetaData />
-                <TimeSeries />
-              </div>
-            )
+            <div>
+              <MetaData />
+              <TimeSeries />
+            </div>
           )}
         </div>
       )}
