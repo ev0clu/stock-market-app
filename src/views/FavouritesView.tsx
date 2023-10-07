@@ -1,6 +1,14 @@
+import { useContext, useEffect } from 'react';
+import AppContext from '../context/AppContext';
 import Favourites from '../components/FaviorutesView/Favourites';
 
 function FavouritesView() {
+  const { resetContext } = useContext(AppContext);
+
+  useEffect(() => {
+    resetContext();
+  }, []);
+
   return (
     <div className="mx-10 flex-1">
       <Favourites />
