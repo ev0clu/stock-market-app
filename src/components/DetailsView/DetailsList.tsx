@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import MetaData from './MetaData';
 import TimeSeries from './TimeSeries';
+import Chart from './Chart';
 
 function DetailsList() {
   const { stockCompanyData, isLoading, stockError } =
@@ -27,7 +28,10 @@ function DetailsList() {
             </div>
           ) : (
             <div>
-              <MetaData />
+              <div className="flex flex-col justify-between gap-5 md:flex-row">
+                <MetaData />
+                <Chart />
+              </div>
               <TimeSeries />
             </div>
           )}
