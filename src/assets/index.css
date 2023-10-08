@@ -33,3 +33,8 @@ body,
 #root {
   min-height: 100vh;
 }
+
+.highcharts-container,
+.highcharts-container svg {
+  width: 100% !important;
+}

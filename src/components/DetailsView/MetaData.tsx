@@ -26,7 +26,7 @@ function MetaData() {
   );
 
   return (
-    <div className="gap flex flex-col">
+    <div className="gap flex flex-1 flex-col">
       <h1 className="mb-2 mt-5 flex flex-row gap-3 text-xl font-bold">
         {stockCompanyData['Meta Data']['1. Information']} (
         {stockCompanyData['Meta Data']['2. Symbol']})

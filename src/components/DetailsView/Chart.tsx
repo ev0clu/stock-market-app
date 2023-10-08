@@ -67,7 +67,7 @@ function Chart() {
   return (
     <>
       {loadChart ? (
-        <div>
+        <div className="flex-1">
           <HighchartsReact
             highcharts={Highcharts}
             constructorType={'stockChart'}

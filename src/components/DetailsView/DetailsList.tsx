@@ -28,7 +28,7 @@ function DetailsList() {
             </div>
           ) : (
             <div>
-              <div className="flex flex-col justify-between gap-5 lg:flex-row">
+              <div className="flex flex-col justify-between gap-5">
                 <MetaData />
                 <Chart />
               </div>

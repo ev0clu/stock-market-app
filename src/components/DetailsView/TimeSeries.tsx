@@ -24,7 +24,7 @@ function TimeSeries() {
       <h1 className="mb-2 mt-5 flex flex-row gap-3 text-xl font-bold">
         Time Series (Daily)
       </h1>
-      <div className="min-w-350 grid grid-cols-2 gap-4 md:grid-cols-5">
+      <div className="min-w-350 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {renderedData}
       </div>
     </>

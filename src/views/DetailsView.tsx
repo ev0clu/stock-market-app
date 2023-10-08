@@ -11,7 +11,7 @@ function DetailsView() {
   }, []);
 
   return (
-    <div className="mx-10 flex-1 lg:mx-96">
+    <div className="mx-10 flex-1 xl:mx-40 2xl:mx-80">
       <NewSearchButton />
       <DetailsList />
     </div>
