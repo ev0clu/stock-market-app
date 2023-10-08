@@ -11,7 +11,7 @@ function SearchView() {
   }, []);
 
   return (
-    <div className="mx-10 flex-1">
+    <div className="mx-10 flex-1 lg:mx-96">
       <SearchBar />
       <SearchList />
     </div>
