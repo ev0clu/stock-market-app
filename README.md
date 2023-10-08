@@ -15,13 +15,14 @@ A stock market app has built with Alpha Vantage API. The app allows users to sea
 ## Features
 
 - Allow user to search stock market data
-- [Alpha Vantage Api](https://www.alphavantage.co/) has used to obtain the data for the stocks
+- [Alpha Vantage API](https://www.alphavantage.co/) has used to obtain the data for the stocks
 - There are three views: a search view, a detail view and a favourite view
 - The search view allow users to search for a stock by entering its symbol or name
 - The detail view display information about the selected stock, including its name, symbol, current price,
-  and any other relevant data that can obtain from Alphavantage. Additionaly, user can add this stock to the favourites based on the symbol
-- The favourite view displays the favourites that use previously added to the container
-- LocalStorage used to store favourite stocks
+  and any other relevant data that can obtain from Alphavantage. Additionaly, user can add this stock to the favourites based on the stock's symbol
+- The favourite view displays the favourites that use previously added to the list and also can get the latest stock market data if click on a symbol
+- LocalStorage used to store the favourite stocks
+- HighChart API used to display stock price data on a chart
 - Hosted on Vercel
 - Responsive design
 
@@ -34,6 +35,9 @@ A stock market app has built with Alpha Vantage API. The app allows users to sea
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/)
 - [Alpha Vantage API](https://www.alphavantage.co/documentation/)
+- [highchart](https://github.com/highcharts/highcharts)
+- [highchart-react-official](https://github.com/highcharts/highcharts-react)
+- [Highchart API](https://api.highcharts.com/highstock/)
 
 ### Layout
 
