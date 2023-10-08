@@ -2,7 +2,7 @@
 
 A stock market app has built with Alpha Vantage API. The app allows users to search for stock quotes and display their data in a new view.
 
-### Demo: [Link](https://stock-market-app-brown.vercel.app/)
+### Demo: [Link](https://stock-market-app-8cq6.vercel.app/)
 
 ## How run from local repository
 
