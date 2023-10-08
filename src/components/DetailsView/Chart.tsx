@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import AppContext from '../../context/AppContext';
-import * as Highcharts from 'highcharts';
+import Highcharts from 'highcharts/highstock';
 import HighchartsReact, {
   HighchartsReactRefObject
 } from 'highcharts-react-official';
