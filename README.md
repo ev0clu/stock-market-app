@@ -4,14 +4,6 @@ A stock market app has built with Alpha Vantage API. The app allows users to sea
 
 ### Demo: [Link](https://stock-market-app-8cq6.vercel.app/)
 
-## How run from local repository
-
-1. Clone the repository
-2. Run `npm install` command in your terminal
-3. Create .env file and add a new enviromental variable named VITE_ALPHA_VANTAGE_API_KEY and add your own api key to this file
-4. Run `npm run dev` command in your terminal
-5. Server running at `http://localhost:5173/`
-
 ## Features
 
 - Allow user to search stock market data
@@ -25,6 +17,14 @@ A stock market app has built with Alpha Vantage API. The app allows users to sea
 - HighChart API used to display stock price data on a chart
 - Hosted on Vercel
 - Responsive design
+
+## How to run from local repository
+
+1. Clone the repository
+2. Run `npm install` command in your terminal
+3. Create .env file and add a new enviromental variable named VITE_ALPHA_VANTAGE_API_KEY and add your own api key to this file
+4. Run `npm run dev` command in your terminal
+5. Server running at `http://localhost:5173/`
 
 ### Dependencies
 
